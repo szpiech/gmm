@@ -1,0 +1,62 @@
+/*
+  NAME:
+    gmm.h
+
+  PURPOSE:
+    A class that implements a 1-dimensional Gaussian Mixture Model fit with the EM algorithm
+
+  PLATFORM:
+    Tested in 2013 on a MacPro running OSX 10.8.2, but it should be platform independent as long as GSL is available.
+  
+  DEPENDENCIES:
+    Requires GNU GSL, which can be found at <http://www.gnu.org/software/gsl/>.
+    When compiling, use the flags 
+      -lgsl -lgslcblas 
+    or 
+      $(LIB_PATH)/libgsl.a $(LIB_PATH)/libgslcblas.a
+
+  USAGE:
+    The class object contains all the machinery to do a GMM estimation with the EM algorithm.
+    Upon instantiation, GMM will require the following:
+    
+      n : number of Gaussians to use
+
+      a : array of initial guesses for the mixture coefficients
+
+      mean :  array of intial guesses for the means
+
+      var :  array of initial guesses for the variances
+
+    Optional parameters:
+
+      maxIter : maximum number of iterations of the EM algorithm, default 250
+      
+      p : desired precision stopping condition, default 1e-5
+      
+      v : if true, will output progress of each step of EM algorithm, default true
+
+    To run the EM algorithm, call GMM::estimate(double *data, int dataSize)
+
+    Example:
+    
+      GMM gmm(n,a,mean,var);
+      gmm.estimate(data,dataSize);
+
+
+  Copyright (C) 2013  Zachary A Szpiech (szpiech@gmail.com)
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  
+ */
+
