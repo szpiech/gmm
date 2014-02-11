@@ -7,11 +7,14 @@ LINK_OPTS = -L$(L_PATH) -lgsl -lgslcblas
 
 all : gmm-testing
 
-gmm-testing : gmm-testing.o
-	g++ -o gmm-testing gmm-testing.o $(LINK_OPTS)
+gmm-testing : gmm-testing.o gmm.o
+	g++ -o gmm-testing gmm-testing.o gmm.o $(LINK_OPTS)
 
 gmm-testing.o : gmm-testing.cpp
 	g++ $(G++FLAG) -c gmm-testing.cpp -I$(I_PATH) 
+
+gmm.o : gmm.cpp
+	g++ $(G++FLAG) -c gmm.cpp 
 
 clean :
 	rm *.o

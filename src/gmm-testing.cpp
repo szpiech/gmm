@@ -9,7 +9,7 @@ int main (int argc, char* argv[])
 {
   
   ifstream fin;
-  fin.open("test.points.mix");
+  fin.open(argv[1]);
   if(fin.fail())
     {
       cerr << "Failed to open test.points.mix\n";
@@ -48,16 +48,16 @@ int main (int argc, char* argv[])
 
   
   double *W = new double[2];
-  W[0] = 0.5;
-  W[1] = 0.5;
+  W[0] = 0.8;
+  W[1] = 0.2;
 
   double *Mu = new double[2];
-  Mu[0] = 0;
-  Mu[1] = 1;
+  Mu[0] = 0.5;
+  Mu[1] = 2;
 
   double *Sigma = new double[2];
-  Sigma[0] = 1;
-  Sigma[1] = 0.5;
+  Sigma[0] = 0.03;
+  Sigma[1] = 4;
 
   GMM gmm(2,W,Mu,Sigma,maxIterations,tolerance);
 
