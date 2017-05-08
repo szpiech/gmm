@@ -59,7 +59,7 @@ int main (int argc, char* argv[])
   Sigma[0] = 0.03;
   Sigma[1] = 4;
 
-  GMM gmm(2,W,Mu,Sigma,maxIterations,tolerance);
+  GMM gmm(gaussians,W,Mu,Sigma,maxIterations,tolerance,true,true);
 
   gmm.estimate(data,numPoints);
 
